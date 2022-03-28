@@ -6,7 +6,7 @@ from transformers import DistilBertForSequenceClassification, AutoTokenizer
 
 @st.cache(allow_output_mutation=True)
 def load_model(path = getenv('MODEL_PATH')):
-    return DistilBertForSequenceClassification.from_pretrained('./model', local_files_only=True)
+    return DistilBertForSequenceClassification.from_pretrained(path, local_files_only=True)
 
 @st.cache(allow_output_mutation=True)
 def load_tokenizer():

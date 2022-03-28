@@ -4,6 +4,6 @@ services:
   atp:
     build: .
     environment:
-      - MODEL_PATH=./research/model
+      - MODEL_PATH=./model
     ports:
       - 80:8080
