@@ -16,15 +16,15 @@ def load_tokenizer():
 tokenizer = load_tokenizer()
 model = load_model()
 categories = np.array([
-    'biology', 
-    'computer_science',
-    'economics',
-    'electrical_engineering',
-    'finance',
-    'mathematics',
-    'physics',
-    'statistics',
-    'unknown'
+    '🧬 Biology', 
+    '🖥️ Computer Science',
+    '💱 Economics',
+    '🔋 Electrical Engineering',
+    '🪙 Finance',
+    '➕ Mathematics',
+    '🔬 Physics',
+    '🎲 Statistics',
+    '🤷🏻 Unknown'
 ])
 
 def run_model(input_text: str, border: float = 0.95):
@@ -43,15 +43,21 @@ def run_model(input_text: str, border: float = 0.95):
         if total >= border:
             return result
 
+def pretty_print(results):
+    return '\n'.join([f'- {name.ljust(25)}: {prob * 100 :. 2f}%' for name, prob in results])
+
 st.write('''
 # Hello, StreamLit!
+
+This is an article topic classifier.
 ''')
 
 input_text = st.text_area('Input abstract of an article you want to classify:')
 
-result = run_model(input_text)
+if input_text != '':
+    result = run_model(input_text)
 
-st.write(f'''
-### The article is:
-{result}
-''')
+    st.write(f'''
+    ### The article is:
+    {result}
+    ''')
